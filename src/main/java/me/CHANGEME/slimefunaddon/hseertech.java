@@ -28,18 +28,23 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 1. 创建分类
          * 分类的显示物品将使用以下物品
          */
-        ItemStack itemGroupItem = new CustomItemStack(Material.DIAMOND, "&4赤石科技");
+        ItemStack New = new CustomItemStack(Material.DIAMOND, "&4赤石科技");
+        ItemStack cailiao = new CustomItemStack(Material.CAKE, "材料");
+        ItemStack jiqi = new CustomItemStack(Material.FURNACE, "机器");
+
+
 
         // 给你的分类提供一个独一无二的ID
-        NamespacedKey itemGroupId = new NamespacedKey(this, "stone_first");
-        ItemGroup itemGroup = new ItemGroup(itemGroupId, itemGroupItem);
+        NamespacedKey itemGroupId = new NamespacedKey(this, "hseertech");
+        ItemGroup wupin = new ItemGroup(itemGroupId, New);
 
         /*
          * 2. 创建一个 SlimefunItemStack
          * 这个类是 ItemStack 的扩展，拥有多个构造函数
          * 重要：每个物品都得有一个独一无二的ID
          */
-        SlimefunItemStack slimefunItem = new SlimefunItemStack("stone_first", Material.DIAMOND, "&4物品之石", "&c+20% 赤石的开始");
+        SlimefunItemStack slimefunItem = new SlimefunItemStack("hseertech", Material.DIAMOND, "&4物品之石", "&c+20% 赤石的开始");
+        SlimefunItemStack bettershi = new SlimefunItemStack("wupin", Material.FURNACE, "物品碎片", "&b高级一点的石");
 
         /*
          * 3. 创建配方
@@ -56,7 +61,7 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 该物品将在增强型工作台中合成。
          * 来自粘液科技本体的配方类型将会自动将配方添加到对应的机器中。
          */
-        SlimefunItem item = new SlimefunItem(itemGroup, slimefunItem, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        SlimefunItem item = new SlimefunItem(wupin, slimefunItem, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
         item.register(this);
     }
 
