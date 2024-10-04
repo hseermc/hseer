@@ -29,8 +29,8 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 分类的显示物品将使用以下物品
          */
         ItemStack New = new CustomItemStack(Material.DIAMOND, "&4赤石科技");
-        ItemStack cailiao = new CustomItemStack(Material.CAKE, "材料");
-        ItemStack jiqi = new CustomItemStack(Material.FURNACE, "机器");
+        ItemStack CAILIAO = new CustomItemStack(Material.CAKE, "材料");
+        ItemStack JIQI = new CustomItemStack(Material.FURNACE, "机器");
 
 
 
