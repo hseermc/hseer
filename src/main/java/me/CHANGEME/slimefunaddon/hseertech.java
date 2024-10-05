@@ -28,23 +28,26 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 1. 创建分类
          * 分类的显示物品将使用以下物品
          */
-        ItemStack New = new CustomItemStack(Material.DIAMOND, "&4赤石科技");
-        ItemStack cailiao = new CustomItemStack(Material.CAKE, "材料");
-        ItemStack jiqi = new CustomItemStack(Material.FURNACE, "机器");
+        CustomItemStack New_CustomItemStack = new CustomItemStack(Material.DIAMOND, "&4物品");
+        CustomItemStack Cailiao_CustomItemStack = new CustomItemStack(Material.CAKE, "材料");
+        CustomItemStack Jiqi_CustomItemStack = new CustomItemStack(Material.FURNACE, "机器");
+        
 
 
 
         // 给你的分类提供一个独一无二的ID
         NamespacedKey itemGroupId = new NamespacedKey(this, "hseertech");
-        ItemGroup wupin = new ItemGroup(itemGroupId, New);
+        ItemGroup wupin = new ItemGroup(itemGroupId, New_CustomItemStack);
+        ItemGroup cailiao = new ItemGroup(itemGroupId, Cailiao_CustomItemStack);
+        ItemGroup jiqi = new ItemGroup(itemGroupId, Jiqi_CustomItemStack);
 
         /*
          * 2. 创建一个 SlimefunItemStack
          * 这个类是 ItemStack 的扩展，拥有多个构造函数
          * 重要：每个物品都得有一个独一无二的ID
          */
-        SlimefunItemStack slimefunItem = new SlimefunItemStack("hseertech", Material.DIAMOND, "&4物品之石", "&c+20% 赤石的开始");
-        SlimefunItemStack bettershi = new SlimefunItemStack("wupin", Material.FURNACE, "物品碎片", "&b高级一点的石");
+        SlimefunItemStack HSEER_SHI = new SlimefunItemStack("HSEER_SHI", Material.STONE, "&a高级的石", "", "&7和石一样？？？");
+        SlimefunItemStack HSEER_BETTER_SHI = new SlimefunItemStack("HSEER_BETTER_SHI", Material.EMERALD, "&a高级石", "", "&7更好的石");
 
         /*
          * 3. 创建配方
@@ -61,8 +64,8 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 该物品将在增强型工作台中合成。
          * 来自粘液科技本体的配方类型将会自动将配方添加到对应的机器中。
          */
-        SlimefunItem item = new SlimefunItem(wupin, slimefunItem, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-        item.register(this);
+        SlimefunItem sfItem =  new SlimefunItem(wupin, HSEER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        sfItem.register(this);
     }
 
     @Override
