@@ -61,9 +61,9 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          */
         ItemStack[] smallshiStack = { new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE) };
         ItemStack[] bettershStack = { 
-            SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,
-            SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,
-            SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI
+            SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,
+            SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,
+            SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO
         };
 
 
