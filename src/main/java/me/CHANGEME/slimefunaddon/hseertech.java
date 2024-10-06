@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
@@ -46,8 +47,9 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 这个类是 ItemStack 的扩展，拥有多个构造函数
          * 重要：每个物品都得有一个独一无二的ID
          */
-        SlimefunItemStack HSEER_SHI = new SlimefunItemStack("HSEER_SHI", Material.STONE, "&a高级的石", "", "&7和石一样？？？");
-        SlimefunItemStack HSEER_BETTER_SHI = new SlimefunItemStack("HSEER_BETTER_SHI", Material.EMERALD, "&a高级石", "", "&7更好的石");
+        SlimefunItemStack HSEER_SHI = new SlimefunItemStack("HSEER_SHI", Material.STONE, "&a石", "", "&7和石一样?");
+        SlimefunItemStack HSEER_BETTER_SHI = new SlimefunItemStack("HSEER_BETTER_SHI", Material.STONE_BRICKS, "&a高级石", "", "&7更好的石");
+        SlimefunItemStack HSEER_SMALL_SHI = new SlimefunItemStack("HSEER_SMALL_SHI", Material.STONE_BUTTON, "小石", "", "什么玩意?");
 
         /*
          * 3. 创建配方
@@ -55,7 +57,13 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 它代表了一个3x3的有序合成配方。
          * 该配方所需的机器将在后面通过RecipeType指定。
          */
-        ItemStack[] recipe = { new ItemStack(Material.EMERALD), null, new ItemStack(Material.EMERALD), null, new ItemStack(Material.DIAMOND), null, new ItemStack(Material.EMERALD), null, new ItemStack(Material.EMERALD) };
+        ItemStack[] smallshiStack = { new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE) };
+        ItemStack[] bettershStack = { 
+            SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,
+            SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,
+            SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI,    SlimefunItems.HSEER_SHI
+        };
+
 
         /*
          * 4. 注册物品
@@ -64,8 +72,12 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 该物品将在增强型工作台中合成。
          * 来自粘液科技本体的配方类型将会自动将配方添加到对应的机器中。
          */
-        SlimefunItem sfItem =  new SlimefunItem(wupin, HSEER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-        sfItem.register(this);
+        SlimefunItem hseershi =  new SlimefunItem(cailiao, HSEER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, smallshiStack);
+        SlimefunItem smallshi = new SlimefunItem(cailiao, HSEER_SMALL_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, bettershStack);
+        //SlimefunItem bettershi = new SlimefunItem(cailiao, HSEER_BETTER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        hseershi.register(this);
+        smallshi.register(this);
+       // bettershi.register(this);
     }
 
     @Override
