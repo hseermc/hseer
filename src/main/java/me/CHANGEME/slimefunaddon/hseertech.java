@@ -10,9 +10,9 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+//import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
 
 public class hseertech extends JavaPlugin implements SlimefunAddon {
 
@@ -30,19 +30,20 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 分类的显示物品将使用以下物品
          */
 
-        CustomItemStack New_CustomItemStack = new CustomItemStack(Material.DIAMOND, "&4物品");
-        CustomItemStack Cailiao_CustomItemStack = new CustomItemStack(Material.CAKE, "材料");
-        CustomItemStack Jiqi_CustomItemStack = new CustomItemStack(Material.FURNACE, "机器");
-        
+        //CustomItemStack New_CustomItemStack = new CustomItemStack(Material.DIAMOND, "&4物品");
+        CustomItemStack Cailiao_CustomItemStack = new CustomItemStack(Material.CAKE, "真石科技");
+        //CustomItemStack Jiqi_CustomItemStack = new CustomItemStack(Material.FURNACE, "机器");
+
 
 
 
 
         // 给你的分类提供一个独一无二的ID
         NamespacedKey itemGroupId = new NamespacedKey(this, "hseertech");
-        ItemGroup wupin = new ItemGroup(itemGroupId, New_CustomItemStack);
+        //ItemGroup wupin = new ItemGroup(itemGroupId, New_CustomItemStack);
         ItemGroup cailiao = new ItemGroup(itemGroupId, Cailiao_CustomItemStack);
-        ItemGroup jiqi = new ItemGroup(itemGroupId, Jiqi_CustomItemStack);
+        //ItemGroup jiqi = new ItemGroup(itemGroupId, Jiqi_CustomItemStack);
+
 
         /*
          * 2. 创建一个 SlimefunItemStack
@@ -61,9 +62,14 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          */
         ItemStack[] smallshiStack = { new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE) };
         ItemStack[] bettershStack = { 
-            HSEER_SHI,    SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,
-            SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,
-            SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO,    SlimefunItems.CARBONADO
+            HSEER_SHI,    HSEER_SHI,    HSEER_SHI,
+            HSEER_SHI,     HSEER_SHI,    HSEER_SHI,
+            HSEER_SHI,     HSEER_SHI,    HSEER_SHI,
+        };
+        ItemStack[] Bestshstack = {
+            HSEER_BETTER_SHI,  HSEER_BETTER_SHI, HSEER_BETTER_SHI,
+            HSEER_BETTER_SHI,  HSEER_BETTER_SHI, HSEER_BETTER_SHI,
+            HSEER_BETTER_SHI,  HSEER_BETTER_SHI, HSEER_BETTER_SHI,
         };
 
 
@@ -74,11 +80,12 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 该物品将在增强型工作台中合成。
          * 来自粘液科技本体的配方类型将会自动将配方添加到对应的机器中。
          */
-        SlimefunItem hseershi =  new SlimefunItem(cailiao, HSEER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, smallshiStack);
-        SlimefunItem smallshi = new SlimefunItem(cailiao, HSEER_SMALL_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, bettershStack);
-        //SlimefunItem bettershi = new SlimefunItem(cailiao, HSEER_BETTER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-        hseershi.register(this);
+        SlimefunItem bestshi =  new SlimefunItem(cailiao, HSEER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, Bestshstack);
+        SlimefunItem smallshi = new SlimefunItem(cailiao, HSEER_SMALL_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, smallshiStack);
+        SlimefunItem bettershi = new SlimefunItem(cailiao, HSEER_BETTER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, bettershStack);
+        bestshi.register(this);
         smallshi.register(this);
+        bettershi.register(this);
        // bettershi.register(this);
     }
 
