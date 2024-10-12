@@ -30,9 +30,9 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 分类的显示物品将使用以下物品
          */
 
-        CustomItemStack New_CustomItemStack = new CustomItemStack(Material.DIAMOND, "&4物品");
-        CustomItemStack Cailiao_CustomItemStack = new CustomItemStack(Material.CAKE, "真石科技");
-        CustomItemStack Jiqi_CustomItemStack = new CustomItemStack(Material.FURNACE, "机器");
+        CustomItemStack New_CustomItemStack = new CustomItemStack(Material.DIAMOND, "&e真石科技-物品");
+        CustomItemStack Cailiao_CustomItemStack = new CustomItemStack(Material.FURNACE, "&e真石科技-材料");
+        CustomItemStack Jiqi_CustomItemStack = new CustomItemStack(Material.CAKE, "&e真石科技-机器");
 
 
 
@@ -78,6 +78,7 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
             new ItemStack(Material.FLINT), new ItemStack(Material.CAULDRON), new ItemStack(Material.FLINT),
             HSEER_BEST_SHI, HSEER_BEST_SHI, HSEER_BEST_SHI,
         };
+        
 
         /*
          * 4. 注册物品
