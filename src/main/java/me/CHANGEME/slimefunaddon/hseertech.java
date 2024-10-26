@@ -1,18 +1,23 @@
 package me.CHANGEME.slimefunaddon;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 //import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 
 public class hseertech extends JavaPlugin implements SlimefunAddon {
 
@@ -53,8 +58,9 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         SlimefunItemStack HSEER_SHI = new SlimefunItemStack("HSEER_SHI", Material.STONE, "&a石", "", "&7和石一样?");
         SlimefunItemStack HSEER_BETTER_SHI = new SlimefunItemStack("HSEER_BETTER_SHI", Material.STONE_BRICKS, "&a高级石", "", "&7更好的石");
         SlimefunItemStack HSEER_SMALL_SHI = new SlimefunItemStack("HSEER_SMALL_SHI", Material.STONE_BUTTON, "小石", "", "什么玩意?");
-        SlimefunItemStack HSEER_HUOGUO = new SlimefunItemStack("HSEER_HUOGUO", Material.CAULDRON, "&火锅", "", "&c不会着火算什么火锅?");
+        SlimefunItemStack HSEER_HUOGUO = new SlimefunItemStack("HSEER_HUOGUO", Material.CAULDRON, "&粹炼炉", "", "&c炼石炉????");
         SlimefunItemStack HSEER_BEST_SHI = new SlimefunItemStack("HSEER_BEST_SHI", Material.WARPED_BUTTON, "&好石", "", "&b最好的石");
+        SlimefunItemStack HSEER_SHI_DING = new SlimefunItemStack("HSEER_SHI_DING", Material.IRON_INGOT, "&B石锭", "&f真石!!!!!!!!!!");
 
         /*
          * 3. 创建配方
@@ -78,6 +84,12 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
             new ItemStack(Material.FLINT), new ItemStack(Material.CAULDRON), new ItemStack(Material.FLINT),
             HSEER_BEST_SHI, HSEER_BEST_SHI, HSEER_BEST_SHI,
         };
+        ItemStack[] ShidingStack = {
+            HSEER_BEST_SHI, HSEER_BETTER_SHI
+        };
+        ItemStack[] SHhidingshuchuStack = {
+            HSEER_SHI_DING
+        };
         
 
         /*
@@ -98,19 +110,46 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         bestshi.register(this);
         huoguo.register(this);
 
-       // bettershi.register(this);
+        //机器
+        jiqi cuilian = new jiqi(jiqi, HSEER_HUOGUO, ShidingStack, HSEER_SHI_DING);
     }
 
+    //机器配方
+    //@ParametersAreNonnullByDefault
+
+   // }
     //自己写的一堆类
     public class simplemachine extends SlimefunItem {
-    
+        @ParametersAreNonnullByDefault
         public simplemachine(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
             super(itemGroup, item, recipeType, recipe);
         }
+
+      //  @Override
+       // public void preRegister() {
+          //  BlockUseHandler huoguohandler = this::onBlockRightClick;
+           // addItemHandler(huoguohandler);
+            
+       // }
+
+       // private void onBlockRightClick(PlayerRightClickEvent event) {
+    // This method will now be called whenever this Block is right-clicked.
+         //   menu.open(player)
+        //}
         
         
     }
+   // public abstract void AContainer(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe)
+    public abstract class jiqi extends AContainer {
 
+        protected jiqi(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType,
+                ItemStack[] recipe, ItemStack recipeOutput) {
+            super(itemGroup, item, recipeType, recipe, recipeOutput);
+            //TODO Auto-generated constructor stub
+        }
+
+    }
+    
 
     @Override
     public void onDisable() {
