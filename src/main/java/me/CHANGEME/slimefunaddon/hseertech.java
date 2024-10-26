@@ -1,5 +1,6 @@
 package me.CHANGEME.slimefunaddon;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Material;
@@ -8,15 +9,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-//import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 
 public class hseertech extends JavaPlugin implements SlimefunAddon {
@@ -111,7 +109,7 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         huoguo.register(this);
 
         //机器
-        jiqi cuilian = new jiqi(jiqi, HSEER_HUOGUO, ShidingStack, HSEER_SHI_DING);
+        //jiqi cuilian = new jiqi(jiqi, HSEER_HUOGUO, ShidingStack, HSEER_SHI_DING);
     }
 
     //机器配方
@@ -120,34 +118,33 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
    // }
     //自己写的一堆类
     public class simplemachine extends SlimefunItem {
-        @ParametersAreNonnullByDefault
+
         public simplemachine(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
             super(itemGroup, item, recipeType, recipe);
         }
 
-      //  @Override
-       // public void preRegister() {
-          //  BlockUseHandler huoguohandler = this::onBlockRightClick;
-           // addItemHandler(huoguohandler);
-            
-       // }
-
-       // private void onBlockRightClick(PlayerRightClickEvent event) {
-    // This method will now be called whenever this Block is right-clicked.
-         //   menu.open(player)
-        //}
+      
         
         
     }
    // public abstract void AContainer(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe)
     public abstract class jiqi extends AContainer {
-
+        @ParametersAreNonnullByDefault
         protected jiqi(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType,
                 ItemStack[] recipe, ItemStack recipeOutput) {
             super(itemGroup, item, recipeType, recipe, recipeOutput);
             //TODO Auto-generated constructor stub
         }
-
+        @Override
+        public int getSpeed() {
+            return 10;
+        }
+        @Override
+        @Nonnull
+        public String getInventoryTitle() {
+            return "粹炼炉";
+        }
+        
     }
     
 
