@@ -133,7 +133,7 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         protected jiqi(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType,
                 ItemStack[] recipe, ItemStack recipeOutput) {
             super(itemGroup, item, recipeType, recipe, recipeOutput);
-            //TODO Auto-generated constructor stub
+       
         }
         @Override
         public int getSpeed() {
