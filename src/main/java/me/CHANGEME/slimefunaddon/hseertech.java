@@ -107,6 +107,8 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         bettershi.register(this);
         bestshi.register(this);
         huoguo.register(this);
+        ItemStack itemStack = bestshi.getItem();
+        //ItemStack shiding = ShidingStack.getItem
 
         //机器
         //jiqi cuilian = new jiqi(jiqi, HSEER_HUOGUO, ShidingStack, HSEER_SHI_DING);
@@ -121,29 +123,50 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
 
         public simplemachine(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
             super(itemGroup, item, recipeType, recipe);
+        }        
+        
+    }
+    //机器配方
+    public class cuilianlupeifang {
+        public ItemStack[] getInput() {
+            return null;
+            
         }
-
-      
-        
-        
     }
    // public abstract void AContainer(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe)
     public abstract class jiqi extends AContainer {
+
+        //private ItemStack HSEER_BEST_SHI;
         @ParametersAreNonnullByDefault
         protected jiqi(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType,
                 ItemStack[] recipe, ItemStack recipeOutput) {
             super(itemGroup, item, recipeType, recipe, recipeOutput);
        
         }
-        @Override
-        public int getSpeed() {
-            return 10;
-        }
-        @Override
+        //ItemStack itemStack = HSEER_BEST_SHI.getItem();
+
+
+      //  @Override
+      //  public int getSpeed() {
+       //     return 10;
+        //}
+        //@Override
         @Nonnull
         public String getInventoryTitle() {
             return "粹炼炉";
         }
+        //@Override
+        public int getEnergyConsumption() {
+            return 100;
+        }
+        //public void registerRecipe(int seconds, ItemStack input, ItemStack output) {
+       // protected void registerDefaultRecipes() {
+            //registerRecipe(10, ItemStack { itemStack }, ItemStack { HSEER_SHI_DING });
+       // }
+ 
+       // }
+
+    
         
     }
     
