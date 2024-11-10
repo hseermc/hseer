@@ -1,10 +1,10 @@
 package me.CHANGEME.slimefunaddon;
 
-import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,6 +27,12 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         if (cfg.getBoolean("options.auto-update")) {
             // 你可以在这里添加自动更新功能
         }
+    
+            // 注册自定义容器
+        SlimefunItemStack customContainerItem = new SlimefunItemStack("CUSTOM_CONTAINER", Material.CHEST, "&l自定义容器");
+        //SlimefunItem customContainer = new SlimefunItem(Slimefun.getRegistry().getGroup("YOUR_GROUP_ID"), customContainerItem, new RecipeType(this), new ItemStack[] { /* 配方物品 */ });
+       // Slimefun.registerItem(customContainer);
+        
 
         /*
          * 1. 创建分类
@@ -112,7 +118,9 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
 
         //机器
         //jiqi cuilian = new jiqi(jiqi, HSEER_HUOGUO, ShidingStack, HSEER_SHI_DING);
+        
     }
+    
 
     //机器配方
     //@ParametersAreNonnullByDefault
@@ -143,7 +151,7 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
             super(itemGroup, item, recipeType, recipe, recipeOutput);
        
         }
-        //ItemStack itemStack = HSEER_BEST_SHI.getItem();
+        /*        //ItemStack itemStack = HSEER_BEST_SHI.getItem();
 
 
       //  @Override
@@ -165,6 +173,144 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
        // }
  
        // }
+ */
+    
+        public void setup(RecipeType recipeType, ItemStack[] recipe) {
+            // 设置机器的等级和类型
+            
+        }
+    
+        @Override
+        public int[] getInputSlots() {
+            // 返回输入槽位
+            return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+        }
+    
+        @Override
+        public int[] getOutputSlots() {
+            // 返回输出槽位
+            return new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        }
+    
+        @Override
+        public int getEnergyConsumption() {
+            // 返回机器的能源消耗
+            return 32;
+        }
+    
+        @Override
+        public int getSpeed() {
+            // 返回机器的速度
+            return 1;
+        }
+    
+        @Override
+        public String getInventoryTitle() {
+            // 返回机器的标题
+            return "&l自定义容器";
+        }
+    
+        @Override
+        public ItemStack getProgressBar() {
+            // 返回进度条
+            return new ItemStack(Material.CLOCK);
+        }
+    
+        
+        public void init() {
+            // 初始化机器
+        }
+    
+    
+
+    
+
+        public boolean isSynchronized() {
+            // 返回机器是否同步
+            return true;
+        }
+    
+        @Override
+        public String getMachineIdentifier() {
+            // 返回机器的唯一标识符
+            return "CUSTOM_CONTAINER";
+        }
+
+      /*   public void openInventory(Player p, jiqi machine) {
+            // 打开机器的GUI
+            ChestMenu menu = new ChestMenu(getInventoryTitle());
+    
+            // 设置槽位
+            for (int i = 0; i < 54; i++) {
+                menu.addItem(i, ChestMenuUtils.getBackground());
+            }
+    
+            // 设置输入槽位
+            for (int slot : getInputSlots()) {
+                menu.addItem(slot, new CustomItemStack(Material.DIAMOND, "&a输入槽位"));
+            }
+    
+            // 设置输出槽位
+            for (int slot : getOutputSlots()) {
+                menu.addItem(slot, new CustomItemStack(Material.GOLD_INGOT, "&b输出槽位"));
+            }
+    
+            // 打开菜单
+            menu.open(p);
+        }
+    */
+      
+        public boolean onRightClick(Player p, jiqi machine, int slot, ItemStack item) {
+            // 处理右键点击事件
+            return false;
+        }
+    
+     
+        public boolean onLeftClick(Player p, jiqi machine, int slot, ItemStack item) {
+            // 处理左键点击事件
+            return false;
+        }
+    
+      
+        public boolean onBreak(Player p, jiqi machine, boolean drop) {
+            // 处理机器被破坏事件
+            return false;
+        }
+    
+        
+        public boolean onPlace(Player p, jiqi machine, boolean drop) {
+            // 处理机器被放置事件
+            return false;
+        }
+    
+   
+       // public boolean onInteract(Player p, jiqi machine, InteractionType type) {
+            // 处理玩家与机器的交互事件
+          //  return false;
+       // }
+    
+        public boolean hasPermission(Player p, jiqi machine) {
+            // 检查玩家是否有权限操作机器
+            return true;
+        }
+    
+     
+        public boolean isItemValidForInputSlot(ItemStack item) {
+            // 检查物品是否可以放入输入槽位
+            return item.getType() == Material.DIAMOND;
+        }
+    
+    
+        public boolean isItemValidForOutputSlot(ItemStack item) {
+            // 检查物品是否可以放入输出槽位
+            return item.getType() == Material.GOLD_INGOT;
+        }
+    
+        @Override
+        public void registerDefaultRecipes() {
+            // 注册默认的配方
+           // this.registerRecipe(new RecipeType(this), new ItemStack[] { SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND, SlimefunItems.DIAMOND }, new ItemStack(Material.GOLD_INGOT));
+        }
 
     
         
