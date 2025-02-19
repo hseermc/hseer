@@ -1,13 +1,14 @@
 package me.CHANGEME.slimefunaddon;
 
-import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -27,6 +28,12 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
         if (cfg.getBoolean("options.auto-update")) {
             // 你可以在这里添加自动更新功能
         }
+    
+            // 注册自定义容器
+        SlimefunItemStack customContainerItem = new SlimefunItemStack("CUSTOM_CONTAINER", Material.CHEST, "&l自定义容器");
+        //SlimefunItem customContainer = new SlimefunItem(Slimefun.getRegistry().getGroup("YOUR_GROUP_ID"), customContainerItem, new RecipeType(this), new ItemStack[] { /* 配方物品 */ });
+       // Slimefun.registerItem(customContainer);
+        
 
         /*
          * 1. 创建分类
@@ -53,12 +60,12 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 这个类是 ItemStack 的扩展，拥有多个构造函数
          * 重要：每个物品都得有一个独一无二的ID
          */
-        SlimefunItemStack HSEER_SHI = new SlimefunItemStack("HSEER_SHI", Material.STONE, "&a石", "", "&7和石一样?");
-        SlimefunItemStack HSEER_BETTER_SHI = new SlimefunItemStack("HSEER_BETTER_SHI", Material.STONE_BRICKS, "&a高级石", "", "&7更好的石");
-        SlimefunItemStack HSEER_SMALL_SHI = new SlimefunItemStack("HSEER_SMALL_SHI", Material.STONE_BUTTON, "小石", "", "什么玩意?");
-        SlimefunItemStack HSEER_HUOGUO = new SlimefunItemStack("HSEER_HUOGUO", Material.CAULDRON, "&粹炼炉", "", "&c炼石炉????");
-        SlimefunItemStack HSEER_BEST_SHI = new SlimefunItemStack("HSEER_BEST_SHI", Material.WARPED_BUTTON, "&好石", "", "&b最好的石");
-        SlimefunItemStack HSEER_SHI_DING = new SlimefunItemStack("HSEER_SHI_DING", Material.IRON_INGOT, "&B石锭", "&f真石!!!!!!!!!!");
+        SlimefunItemStack HSEERMC_SHI = new SlimefunItemStack("HSEERMC_SHI", Material.STONE, "&a石", "", "&7和石一样?");
+        SlimefunItemStack HSEERMC_BETTER_SHI = new SlimefunItemStack("HSEERMC_BETTER_SHI", Material.STONE_BRICKS, "&a高级石", "", "&7更好的石");
+        SlimefunItemStack HSEERMC_SMALL_SHI = new SlimefunItemStack("HSEERMC_SMALL_SHI", Material.STONE_BUTTON, "小石", "", "什么玩意?");
+        SlimefunItemStack HSEERMC_HUOGUO = new SlimefunItemStack("HSEERMC_HUOGUO", Material.CAULDRON, "&粹炼炉", "", "&c炼石炉????");
+        SlimefunItemStack HSEERMC_BEST_SHI = new SlimefunItemStack("HSEERMC_BEST_SHI", Material.WARPED_BUTTON, "&好石", "", "&b最好的石");
+        SlimefunItemStack HSEERMC_SHI_DING = new SlimefunItemStack("HSEERMC_SHI_DING", Material.IRON_INGOT, "&B石锭", "&f真石!!!!!!!!!!");
 
         /*
          * 3. 创建配方
@@ -67,26 +74,26 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 该配方所需的机器将在后面通过RecipeType指定。
          */
         ItemStack[] smallshiStack = { new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE), new ItemStack(Material.COBBLESTONE) };
-        ItemStack[] bettershStack = { 
-            HSEER_SHI,    HSEER_SHI,    HSEER_SHI,
-            HSEER_SHI,     HSEER_SHI,    HSEER_SHI,
-            HSEER_SHI,     HSEER_SHI,    HSEER_SHI,
+        ItemStack[] bettershiStack = {
+            HSEERMC_SHI,    HSEERMC_SHI,    HSEERMC_SHI,
+            HSEERMC_SHI,     HSEERMC_SHI,    HSEERMC_SHI,
+            HSEERMC_SHI,     HSEERMC_SHI,    HSEERMC_SHI,
         };
-        ItemStack[] Bestshstack = {
-            HSEER_BETTER_SHI,  HSEER_BETTER_SHI, HSEER_BETTER_SHI,
-            HSEER_BETTER_SHI,  HSEER_BETTER_SHI, HSEER_BETTER_SHI,
-            HSEER_BETTER_SHI,  HSEER_BETTER_SHI, HSEER_BETTER_SHI,
+        ItemStack[] Bestshistack = {
+            HSEERMC_BETTER_SHI,  HSEERMC_BETTER_SHI, HSEERMC_BETTER_SHI,
+            HSEERMC_BETTER_SHI,  HSEERMC_BETTER_SHI, HSEERMC_BETTER_SHI,
+            HSEERMC_BETTER_SHI,  HSEERMC_BETTER_SHI, HSEERMC_BETTER_SHI,
         };
         ItemStack[] HuoguoStack = {
-            HSEER_BEST_SHI, HSEER_BEST_SHI, HSEER_BEST_SHI,
+            HSEERMC_BEST_SHI, HSEERMC_BEST_SHI, HSEERMC_BEST_SHI,
             new ItemStack(Material.FLINT), new ItemStack(Material.CAULDRON), new ItemStack(Material.FLINT),
-            HSEER_BEST_SHI, HSEER_BEST_SHI, HSEER_BEST_SHI,
+            HSEERMC_BEST_SHI, HSEERMC_BEST_SHI, HSEERMC_BEST_SHI,
         };
         ItemStack[] ShidingStack = {
-            HSEER_BEST_SHI, HSEER_BETTER_SHI
+            HSEERMC_BEST_SHI, HSEERMC_BETTER_SHI
         };
         ItemStack[] SHhidingshuchuStack = {
-            HSEER_SHI_DING
+            HSEERMC_SHI_DING
         };
         
 
@@ -97,83 +104,44 @@ public class hseertech extends JavaPlugin implements SlimefunAddon {
          * 该物品将在增强型工作台中合成。
          * 来自粘液科技本体的配方类型将会自动将配方添加到对应的机器中。
          */
-        //SlimefunItem shi =  new SlimefunItem(cailiao, HSEER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, Bestshstack);
-        SlimefunItem smallshi = new SlimefunItem(cailiao, HSEER_SMALL_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, smallshiStack);
-        SlimefunItem bettershi = new SlimefunItem(cailiao, HSEER_BETTER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, bettershStack);
-        SlimefunItem bestshi = new SlimefunItem(cailiao, HSEER_BEST_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, Bestshstack);
-        simplemachine huoguo = new simplemachine(jiqi, HSEER_HUOGUO, RecipeType.ENHANCED_CRAFTING_TABLE, HuoguoStack);
+        //SlimefunItem shi =  new SlimefunItem(cailiao, HSEERMC_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, Bestshstack);
+        SlimefunItem smallshi = new SlimefunItem(cailiao, HSEERMC_SMALL_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, smallshiStack);
+        SlimefunItem bettershi = new SlimefunItem(cailiao, HSEERMC_BETTER_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, bettershiStack);
+        SlimefunItem bestshi = new SlimefunItem(cailiao, HSEERMC_BEST_SHI, RecipeType.ENHANCED_CRAFTING_TABLE, Bestshistack);
+        //simplemachine huoguo = new simplemachine(jiqi, HSEERMC_HUOGUO, RecipeType.ENHANCED_CRAFTING_TABLE, HuoguoStack);
         //shi.register(this);
         smallshi.register(this);
         bettershi.register(this);
         bestshi.register(this);
-        huoguo.register(this);
+        //huoguo.register(this);
         ItemStack itemStack = bestshi.getItem();
         //ItemStack shiding = ShidingStack.getItem
 
         //机器
-        //jiqi cuilian = new jiqi(jiqi, HSEER_HUOGUO, ShidingStack, HSEER_SHI_DING);
+        //jiqi cuilian = new jiqi(jiqi, HSEERMC_HUOGUO, ShidingStack, HSEERMC_SHI_DING);
+
     }
 
-    //机器配方
-    //@ParametersAreNonnullByDefault
 
-   // }
-    //自己写的一堆类
-    public class simplemachine extends SlimefunItem {
+/*******************    💫 Codegeex Inline Diff    *******************/
 
-        public simplemachine(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-            super(itemGroup, item, recipeType, recipe);
-        }        
-        
+    public class ChestMenu extends Object {
+        ChestMenu menu = new ChestMenu();
+        public void addItem(int slot, ItemStack item) {
+            menu.addItem(0, new ItemStack(Material.DIAMOND));
+        }
+
     }
-    //机器配方
-    public class cuilianlupeifang {
-        public ItemStack[] getInput() {
-            return null;
-            
-        }
-    }
-   // public abstract void AContainer(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe)
-    public abstract class jiqi extends AContainer {
-
-        //private ItemStack HSEER_BEST_SHI;
-        @ParametersAreNonnullByDefault
-        protected jiqi(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType,
-                ItemStack[] recipe, ItemStack recipeOutput) {
-            super(itemGroup, item, recipeType, recipe, recipeOutput);
-       
-        }
-        //ItemStack itemStack = HSEER_BEST_SHI.getItem();
-
-
-      //  @Override
-      //  public int getSpeed() {
-       //     return 10;
-        //}
-        //@Override
-        @Nonnull
-        public String getInventoryTitle() {
-            return "粹炼炉";
-        }
-        //@Override
-        public int getEnergyConsumption() {
-            return 100;
-        }
-        //public void registerRecipe(int seconds, ItemStack input, ItemStack output) {
-       // protected void registerDefaultRecipes() {
-            //registerRecipe(10, ItemStack { itemStack }, ItemStack { HSEER_SHI_DING });
-       // }
- 
-       // }
-
     
-        
-    }
+/****************  a3513c24ee1d426e81aea8b0e240ec7d  ****************/
+
+
     
 
     @Override
     public void onDisable() {
         // 禁用插件的逻辑...
+        Bukkit.getConsoleSender().sendMessage("插件已禁用！");
     }
 
     @Override
